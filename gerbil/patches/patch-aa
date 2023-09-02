@@ -1,0 +1,15 @@
+$NetBSD: patch-aa,v 1.5 2023/04/26 20:53:23 nikita Exp $
+
+Don't build the misc subdir. XXX: why?
+
+--- makefile.in.orig	2022-01-03 04:47:06.000000000 +0100
++++ makefile.in	2023-04-26 22:00:35.624614777 +0200
+@@ -80,7 +80,7 @@
+ bindir="$(bindir)" docdir="$(docdir)" \
+ infodir="$(infodir)" emacsdir="$(emacsdir)"
+ 
+-SUBDIRS = include bin lib gsi gsc misc doc tests examples contrib prebuilt bench githooks
++SUBDIRS = include bin lib gsi gsc doc tests examples contrib bench githooks
+ 
+ RCFILES = README README.md INSTALL.txt LICENSE-2.0.txt LGPL.txt \
+ makefile.in configure configure.ac config.guess config.sub install-sh mkidirs \

@@ -1,0 +1,24 @@
+$NetBSD: patch-misc_build-gambit-android,v 1.1 2023/04/26 20:53:23 nikita Exp $
+
+Fix portability.
+
+--- misc/build-gambit-android.orig	2023-04-26 22:18:51.414207945 +0200
++++ misc/build-gambit-android	2023-04-26 22:20:10.731378158 +0200
+@@ -111,7 +111,7 @@
+   rootfromhere="`grep \"^rootfromhere = *\" makefile 2> /dev/null | sed -e \"s/rootfromhere = //\"`"
+   gambit_dist="`grep \"^PACKAGE_TARNAME = *\" makefile 2> /dev/null | sed -e \"s/PACKAGE_TARNAME = *//\"`"
+ 
+-  if [ "$gambit_dist" == "" ]; then
++  if [ "$gambit_dist" = "" ]; then
+ 
+     download_gambit_dist_tgz
+ 
+@@ -151,7 +151,7 @@
+   cd "$dir"
+   make clean
+   make -j 2
+-  if [ "$update_with_latest_changes" == "yes" ]; then
++  if [ "$update_with_latest_changes" = "yes" ]; then
+     make update
+     make -j 2
+   fi
